@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:gravity="center_vertical"
+    >
+
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+<!--    android:theme="@style/CustomSpinnerStyle"-->
+    <EditText
+        android:id="@+id/timeFrom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintColor"
+        android:hint="From"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:inputType="time"
+        android:maxLength="2"/>
+
+    <EditText
+        android:id="@+id/timeTo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="To"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintColor"
+        android:inputType="time"
+        android:maxLength="2"/>
+
+    <ImageView
+        android:id="@+id/deleteItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete"
+        android:contentDescription="Delete"
+        android:padding="8dp"/>
+
+</LinearLayout>

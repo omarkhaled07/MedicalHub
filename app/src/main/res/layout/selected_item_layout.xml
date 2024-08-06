@@ -1,0 +1,29 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_6sdp"
+    android:layout_marginTop="@dimen/_6sdp"
+    android:background="@drawable/edit_text_background"
+    >
+
+    <TextView
+        android:id="@+id/selectedItemText"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+
+    <ImageView
+        android:id="@+id/deleteItemButton"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:src="@drawable/ic_delete"
+        android:layout_marginStart="@dimen/_4sdp"
+        app:tint="#8E0303" />
+
+</LinearLayout>

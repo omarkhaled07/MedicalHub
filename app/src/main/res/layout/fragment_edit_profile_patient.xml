@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/black"
+        android:hint="Username" />
+
+    <EditText
+        android:id="@+id/et_NationalID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/black"
+        android:hint="National ID" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/black"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/black"
+        android:hint="Address" />
+
+    <EditText
+        android:id="@+id/et_phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/black"
+        android:hint="Phone Number" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/black"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/et_confirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirm Password"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/black"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
+        android:text="Update" />
+
+</LinearLayout>

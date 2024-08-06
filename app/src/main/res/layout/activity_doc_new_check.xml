@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:background="@color/white"
+    tools:context=".DocNewCheck">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:id="@+id/MedicalCheckTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_95sdp"
+            android:text="-- Medicine Description --"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/UserName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/username"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/blue"
+            android:hint="Enter User Name"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/black"
+            android:inputType="text"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/NationalId" />
+
+        <EditText
+            android:id="@+id/NationalId"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/id"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/blue"
+            android:hint="Enter National ID"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MedicalCheckTitle" />
+
+        <EditText
+            android:id="@+id/PhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/phonenumber"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/blue"
+            android:hint="Enter Phone Number"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/black"
+            android:inputType="phone"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UserName" />
+
+        <EditText
+            android:id="@+id/Age"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/mail"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/blue"
+            android:hint="Enter e-mail"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PhoneNumber" />
+
+        <EditText
+            android:id="@+id/insuranceID"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/home"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/blue"
+            android:hint="Enter Address"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Age" />
+
+
+        <TextView
+            android:id="@+id/DiagnosisText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="Diagnosis: "
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/insuranceID" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/DiagnosisRecyclerView"
+            android:layout_width="@dimen/_290sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DiagnosisText"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/DiagnosisNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Diagnosis Note: "
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DiagnosisRecyclerView" />
+
+        <EditText
+            android:id="@+id/DiagnosisEditNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:padding="@dimen/_6sdp"
+            android:textColor="@color/black"
+            android:background="@drawable/notedesign"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DiagnosisNote" />
+
+        <Button
+            android:id="@+id/diagnosisAlertBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:text="Add Diagnosis"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DiagnosisEditNote" />
+
+        <TextView
+            android:id="@+id/MedicinText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Medicine: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/diagnosisAlertBtn" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/MedicinRecyclerView"
+            android:layout_width="@dimen/_290sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MedicinText"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/MedicinAlertBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Medicine"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MedicinRecyclerView" />
+
+        <TextView
+            android:id="@+id/AnalysisText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Analysis: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MedicinAlertBtn" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/AnalysisRecyclerView"
+            android:layout_width="@dimen/_290sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AnalysisText"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/AnalysisNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Analysis Note: "
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AnalysisRecyclerView" />
+
+        <EditText
+            android:id="@+id/AnalysisEditNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:padding="@dimen/_6sdp"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:background="@drawable/notedesign"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AnalysisNote" />
+
+        <Button
+            android:id="@+id/AnalysisAlertButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Analysis"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.094"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AnalysisEditNote" />
+
+        <TextView
+            android:id="@+id/XRayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="X-Rays: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AnalysisAlertButton" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/XRayRecyclerView"
+            android:layout_width="@dimen/_290sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/XRayText"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/XRayNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="XRay Note: "
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/XRayRecyclerView" />
+
+        <EditText
+            android:id="@+id/XRayEditNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:padding="@dimen/_6sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:background="@drawable/notedesign"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/XRayNote" />
+
+        <Button
+            android:id="@+id/XRayAlertButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add X-Rays"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.094"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/XRayEditNote" />
+
+        <TextView
+            android:id="@+id/AdditionalNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Additional Notes: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/XRayAlertButton" />
+
+        <EditText
+            android:id="@+id/AdditionalEditNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:padding="@dimen/_6sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:background="@drawable/notedesign"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AdditionalNotes" />
+
+
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:text="Submit"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/AdditionalEditNote"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

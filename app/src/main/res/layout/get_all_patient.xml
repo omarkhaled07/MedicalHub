@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/_15sdp"
+    >
+
+    <TextView
+        android:id="@+id/itemList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@drawable/rounded_policy_background"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="item" />
+
+    <LinearLayout
+        android:id="@+id/hiddenLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        >
+
+        <TextView
+            android:id="@+id/hiddenText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:background="@drawable/rounded_policy_background"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="hidden item" />
+
+    </LinearLayout>
+
+</LinearLayout>

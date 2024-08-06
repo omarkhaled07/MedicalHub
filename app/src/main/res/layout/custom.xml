@@ -1,0 +1,119 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_6sdp"
+    android:layout_marginTop="@dimen/_6sdp"
+    android:background="@drawable/edit_text_background"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/selectedItem"
+        android:layout_width="0dp"
+        android:layout_weight="1.8"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+        <TextView
+            android:id="@+id/second"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="Tablests/"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Ampoule"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="Ampoule"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+        <EditText
+        android:id="@+id/one"
+        android:hint="Tablests"
+        android:layout_width="0dp"
+        android:layout_weight="0.80"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+
+    <TextView
+        android:id="@+id/duration"
+        android:text="Days:"
+        android:layout_width="@dimen/_35sdp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+
+    <EditText
+        android:id="@+id/durationEdit"
+        android:hint="Days"
+        android:layout_width="0dp"
+        android:layout_weight="0.70"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+
+
+
+    <ImageView
+        android:id="@+id/deleteItem"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_delete"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_gravity="center_vertical"
+        app:tint="#8E0303" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Note:  "
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/notedesign"
+            android:padding="@dimen/_4sdp"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

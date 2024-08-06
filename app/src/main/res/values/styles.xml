@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Define a custom style for the Spinner -->
+    <style name="CustomSpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:spinnerMode">dropdown</item>
+    </style>
+
+    <style name="CustomTVStyleWhiteShapeWithCornerRadius" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/white_shape_with_corner_radius</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>
