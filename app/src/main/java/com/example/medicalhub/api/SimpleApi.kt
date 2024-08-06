@@ -31,7 +31,7 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface SimpleApi {
-
+//ezayak ya dr ahmed
     @POST("Doctors")
     suspend fun doctorSignUp(
         @Body loginBody: SignupDoctorBody
