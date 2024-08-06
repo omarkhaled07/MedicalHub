@@ -26,4 +26,16 @@
         android:name="com.example.medicalhub.fragment.EditProfilePatient"
         android:label="Edit Patient Profile"
         tools:layout="@layout/fragment_edit_profile_patient"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.medicalhub.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfilePatient"
+            app:destination="@id/editProfilePatient" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
 </navigation>

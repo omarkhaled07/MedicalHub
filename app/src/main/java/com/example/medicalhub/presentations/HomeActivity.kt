@@ -69,8 +69,8 @@ class HomeActivity : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_edit_profile -> {
-                    navController.navigate(R.id.editProfileFragment)
+                R.id.nav_profile -> {
+                    navController.navigate(R.id.profileFragment)
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
