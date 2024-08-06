@@ -44,6 +44,7 @@ class EditProfileFragment : Fragment() {
         preference = SharedPrefManager(requireContext())
 
         val docName = preference.getPrefVal(requireContext()).getString("username", "")
+        Log.d("abdo", "docName $docName")
         val token = preference.getPrefVal(requireContext()).getString("token", "")
 
         username = view.findViewById(R.id.et_username)
@@ -56,6 +57,7 @@ class EditProfileFragment : Fragment() {
         updateButton = view.findViewById(R.id.btn_update)
 
         Log.d("abdo", "Login doctor edit fragment")
+        Log.d("abdo", "docName $docName")
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]

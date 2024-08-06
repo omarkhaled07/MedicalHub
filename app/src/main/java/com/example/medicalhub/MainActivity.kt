@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button.setOnClickListener {
+            preference.setPrefVal(this,"SelectedRadioButton",selectedText)
             if (!isNetworkAvailable()) {
                 Toast.makeText(this, "Please enable Internet Connection", Toast.LENGTH_SHORT)
                     .show()
@@ -112,6 +113,7 @@ class MainActivity : AppCompatActivity() {
                         preference.setPrefVal(this, "password", password)
                         preference.setPrefVal(this, "token", response.body()?.token.toString())
                         preference.setPrefVal(this, "docID", response.body()?.id.toString())
+                        Log.d("abdo", "username $userName")
                         Log.d("abdo", "doc id ${response.body()?.id.toString()}")
                         Log.d("abdo", "token ${response.body()?.token.toString()}")
                         Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show()
@@ -126,6 +128,7 @@ class MainActivity : AppCompatActivity() {
 
                 })
             }else{
+                preference.setPrefVal(this,"SelectedRadioButton",selectedText)
                 if (nationalID.isEmpty() || password.isEmpty()) {
                     Toast.makeText(this, "Please enter NationalID and Password", Toast.LENGTH_SHORT)
                         .show()

@@ -20,12 +20,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_username"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/username"
                 android:drawablePadding="10dp"
-                android:text="Ahmed Hussieny"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor" />
 
@@ -46,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/mail"
                 android:drawablePadding="10dp"
-                android:text="Email"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor" />
 

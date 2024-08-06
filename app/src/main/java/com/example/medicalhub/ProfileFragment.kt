@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -15,6 +16,7 @@ import com.example.medicalhub.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var preferences: SharedPrefManager
+    private lateinit var tvName: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,5 +41,7 @@ class ProfileFragment : Fragment() {
             }
 
         }
+
+        binding.tvName.text = preferences.getPrefVal(requireContext()).getString("username", "")
     }
 }
