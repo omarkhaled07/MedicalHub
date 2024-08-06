@@ -15,8 +15,8 @@ data class PatientData(
     val analysis: String,
     val x_Rays: String,
     val additionalNotes: String,
-    val doctorId: String,
-    val patientId: String
+    val patientID: String,
+    val CreatedOn: String
 )
 
 class PatientDataAdapter(private val patientDataList: List<PatientData>) :
@@ -28,6 +28,8 @@ class PatientDataAdapter(private val patientDataList: List<PatientData>) :
         val analysis: TextView = itemView.findViewById(R.id.analysis)
         val xRays: TextView = itemView.findViewById(R.id.xRays)
         val additionalNotes: TextView = itemView.findViewById(R.id.additionalNotes)
+        val patientID: TextView = itemView.findViewById(R.id.patientID)
+        val CreatedOn: TextView = itemView.findViewById(R.id.CreatedOn)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientDataViewHolder {
@@ -38,10 +40,12 @@ class PatientDataAdapter(private val patientDataList: List<PatientData>) :
     override fun onBindViewHolder(holder: PatientDataViewHolder, position: Int) {
         val patientData = patientDataList[position]
         holder.diagnosis.text = patientData.diagnosis
-        holder.medicine.text = patientData.medicine
-        holder.analysis.text = patientData.analysis
-        holder.xRays.text = patientData.x_Rays
-        holder.additionalNotes.text = patientData.additionalNotes
+        holder.medicine.text = "Medicin: "+ patientData.medicine
+        holder.analysis.text = "Analysis: "+ patientData.analysis
+        holder.xRays.text = "XRay: "+ patientData.x_Rays
+        holder.additionalNotes.text = "Additional notes: "+ patientData.additionalNotes
+        holder.patientID.text = "ID: "+ patientData.patientID
+        holder.CreatedOn.text = "Date: "+ patientData.CreatedOn
     }
 
     override fun getItemCount() = patientDataList.size

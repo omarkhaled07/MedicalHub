@@ -64,7 +64,7 @@ class DoctorHistoryRosheta : AppCompatActivity() {
                         it.x_Rays,
                         it.additionalNotes,
                         it.doctorId,
-                        it.patientId
+                        it.createdOn
                     )
                 }
                 docDataAdapter = PatientDataAdapter(patientDataList)

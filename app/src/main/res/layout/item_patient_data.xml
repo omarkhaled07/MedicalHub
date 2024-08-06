@@ -20,7 +20,7 @@
         android:id="@+id/medicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medicine"
+        android:text="Medicine: "
         android:textColor="@color/black"
         android:textSize="14sp" />
 
@@ -28,7 +28,7 @@
         android:id="@+id/analysis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Analysis"
+        android:text="Analysis: "
         android:textColor="@color/black"
         android:textSize="14sp" />
 
@@ -36,7 +36,7 @@
         android:id="@+id/xRays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="X-Rays"
+        android:text="X-Rays: "
         android:textColor="@color/black"
         android:textSize="14sp" />
 
@@ -44,7 +44,23 @@
         android:id="@+id/additionalNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Additional Notes"
+        android:text="Additional Notes: "
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/patientID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient ID: "
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/CreatedOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: "
         android:textColor="@color/black"
         android:textSize="14sp" />
 </LinearLayout>
