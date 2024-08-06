@@ -15,6 +15,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.i_freezemanager.data.SharedPrefManager
+import com.example.medicalhub.MainActivity
 import com.example.medicalhub.R
 import com.google.android.material.navigation.NavigationView
 
@@ -74,7 +75,11 @@ class HomePatientActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_sign_out -> {
-                    // Handle sign out
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK  // Clear the back stack
+                    startActivity(intent)
+                    finish()
                     true
                 }
 
