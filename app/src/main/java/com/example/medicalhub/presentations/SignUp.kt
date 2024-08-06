@@ -1,9 +1,8 @@
-package com
+package com.example.medicalhub.presentations
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.View

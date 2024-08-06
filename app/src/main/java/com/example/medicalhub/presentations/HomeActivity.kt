@@ -1,4 +1,4 @@
-package com
+package com.example.medicalhub.presentations
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -15,11 +15,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.i_freezemanager.data.SharedPrefManager
-import com.example.medicalhub.DocNewCheck
 import com.example.medicalhub.R
-import com.example.medicalhub.presentations.AllPatientsReservation
-import com.example.medicalhub.presentations.DoctorHistoryRosheta
-import com.example.medicalhub.presentations.MyWorkingTime
 import com.google.android.material.navigation.NavigationView
 
 class HomeActivity : AppCompatActivity() {

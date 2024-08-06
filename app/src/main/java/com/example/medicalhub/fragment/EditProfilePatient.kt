@@ -12,14 +12,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.HomeActivity
 import com.example.i_freezemanager.data.SharedPrefManager
-import com.example.medicalhub.HomePatientActivity
+import com.example.medicalhub.presentations.HomePatientActivity
 import com.example.medicalhub.MainViewModel
 import com.example.medicalhub.MainViewModelFactory
 import com.example.medicalhub.R
 import com.example.medicalhub.repository.Repository
-import com.model.DoctorNewData
 import com.model.PatientNewData
 
 

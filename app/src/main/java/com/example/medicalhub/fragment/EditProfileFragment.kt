@@ -9,11 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.HomeActivity
+import com.example.medicalhub.presentations.HomeActivity
 import com.example.i_freezemanager.data.SharedPrefManager
 import com.example.medicalhub.MainViewModel
 import com.example.medicalhub.MainViewModelFactory
@@ -25,7 +24,6 @@ import com.model.DoctorNewData
 class EditProfileFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private lateinit var preference: SharedPrefManager
-
     private lateinit var username: EditText
     private lateinit var et_specialization: EditText
     private lateinit var et_email: EditText
@@ -74,7 +72,6 @@ class EditProfileFragment : Fragment() {
             }
 
         })
-        // Initialize views
 
 
         // Set click listener for update button

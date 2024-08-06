@@ -23,7 +23,7 @@
             android:name=".presentations.PatNewReservation"
             android:exported="false" />
         <activity
-            android:name=".AllPatientHistory"
+            android:name=".presentations.AllPatientHistory"
             android:exported="false" />
         <activity
             android:name=".presentations.PatientHistory"
@@ -32,10 +32,10 @@
             android:name=".presentations.MyWorkingTime"
             android:exported="false" />
         <activity
-            android:name=".DocNewCheck"
+            android:name=".presentations.DocNewCheck"
             android:exported="false" />
         <activity
-            android:name=".HomePatientActivity"
+            android:name=".presentations.HomePatientActivity"
             android:exported="false" />
         <activity
             android:name=".presentations.AllPatientsReservation"
@@ -44,10 +44,10 @@
             android:name=".AllReservations"
             android:exported="false" />
         <activity
-            android:name="com.HomeActivity"
+            android:name=".presentations.HomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.SignUp"
+            android:name=".presentations.SignUp"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,4 +1,4 @@
-package com.example.medicalhub
+package com.example.medicalhub.presentations
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +8,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i_freezemanager.data.SharedPrefManager
+import com.example.medicalhub.MainViewModel
+import com.example.medicalhub.MainViewModelFactory
+import com.example.medicalhub.R
 import com.example.medicalhub.adapter.PatientData
 import com.example.medicalhub.adapter.PatientDataAdapter
-import com.example.medicalhub.presentations.PatientHistory
 import com.example.medicalhub.repository.Repository
 import com.model.patientRosheta
 

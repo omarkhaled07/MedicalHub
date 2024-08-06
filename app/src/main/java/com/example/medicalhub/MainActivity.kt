@@ -15,9 +15,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.HomeActivity
-import com.SignUp
+import com.example.medicalhub.presentations.HomeActivity
+import com.example.medicalhub.presentations.SignUp
 import com.example.i_freezemanager.data.SharedPrefManager
+import com.example.medicalhub.presentations.HomePatientActivity
 import com.example.medicalhub.repository.Repository
 import com.google.android.material.textfield.TextInputLayout
 import com.model.LoginDoctorBody

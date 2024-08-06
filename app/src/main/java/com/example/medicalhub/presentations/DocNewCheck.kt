@@ -1,4 +1,4 @@
-package com.example.medicalhub
+package com.example.medicalhub.presentations
 
 import CustomAdapter
 import SelectedItemsAdapter
@@ -16,8 +16,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.HomeActivity
 import com.example.i_freezemanager.data.SharedPrefManager
+import com.example.medicalhub.MainViewModel
+import com.example.medicalhub.MainViewModelFactory
+import com.example.medicalhub.R
 import com.example.medicalhub.repository.Repository
 import com.model.AllPateintData
 import com.model.MedicinDescription

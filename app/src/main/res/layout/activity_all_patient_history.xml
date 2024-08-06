@@ -6,7 +6,7 @@
     android:background="@color/blue"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".AllPatientHistory">
+    tools:context=".presentations.AllPatientHistory">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/patientDataRecyclerView"
