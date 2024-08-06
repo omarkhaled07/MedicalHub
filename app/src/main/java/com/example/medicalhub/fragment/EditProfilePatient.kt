@@ -18,6 +18,7 @@ import com.example.medicalhub.MainViewModel
 import com.example.medicalhub.MainViewModelFactory
 import com.example.medicalhub.R
 import com.example.medicalhub.repository.Repository
+import com.google.android.material.textfield.TextInputEditText
 import com.model.PatientNewData
 
 
@@ -25,15 +26,15 @@ class EditProfilePatient : Fragment() {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var preference: SharedPrefManager
-
-    private lateinit var username: EditText
-    private lateinit var et_NationalID: EditText
-    private lateinit var et_email: EditText
-    private lateinit var et_address: EditText
-    private lateinit var et_phoneNumber: EditText
-    private lateinit var et_confirmPassword: EditText
-    private lateinit var password: EditText
+    private lateinit var username: TextInputEditText
+    private lateinit var et_NationalID: TextInputEditText
+    private lateinit var et_email: TextInputEditText
+    private lateinit var et_address: TextInputEditText
+    private lateinit var et_phoneNumber: TextInputEditText
+    private lateinit var et_confirmPassword: TextInputEditText
+    private lateinit var password: TextInputEditText
     private lateinit var updateButton: Button
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +51,7 @@ class EditProfilePatient : Fragment() {
 
 
         username = view.findViewById(R.id.et_username)
-        et_NationalID = view.findViewById(R.id.et_NationalID)
+        et_NationalID = view.findViewById(R.id.et_nationalId)
         et_email = view.findViewById(R.id.et_email)
         et_address = view.findViewById(R.id.et_address)
         et_phoneNumber = view.findViewById(R.id.et_phoneNumber)

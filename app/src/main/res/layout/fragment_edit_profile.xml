@@ -87,7 +87,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/special"
+                android:drawableStart="@drawable/home"
                 android:drawablePadding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor" />
@@ -107,7 +107,7 @@
                 android:id="@+id/et_phoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/special"
+                android:drawableStart="@drawable/phonenumber"
                 android:drawablePadding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor" />
@@ -127,7 +127,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/special"
+                android:drawableStart="@drawable/password"
                 android:drawablePadding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor" />
@@ -147,7 +147,7 @@
                 android:id="@+id/et_confirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/special"
+                android:drawableStart="@drawable/password"
                 android:drawablePadding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor" />
