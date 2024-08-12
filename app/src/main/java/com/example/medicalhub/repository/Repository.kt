@@ -2,10 +2,11 @@ package com.example.medicalhub.repository
 
 import com.example.medicalhub.api.RetrofitInstance
 import com.model.AllPateintData
-import com.model.DaysOfWeek
+import com.model.BookDate
 import com.model.DoctorData
 import com.model.DoctorDataEditResponse
 import com.model.DoctorNewData
+import com.model.GetAllDoctors
 import com.model.LoginDoctorBody
 import com.model.LoginDoctorBodyResponse
 import com.model.LoginPatientBody
@@ -14,20 +15,21 @@ import com.model.MedicinDescription
 import com.model.PateintData
 import com.model.PatientDataEditResponse
 import com.model.PatientNewData
+import com.model.ResponseBookDate
 import com.model.SignUpDoctorBodyResponse
 import com.model.SignUpPatientBodyResponse
 import com.model.SignupDoctorBody
 import com.model.SignupPatientBody
+import com.model.SortedTimeInterval
+import com.model.StructuredWorkingTimes
+import com.model.allDaysWithID
 import com.model.allDrRosheta
 import com.model.medicinDescriptionResponse
 import com.model.patientRosheta
 import retrofit2.Response
-import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
-import retrofit2.http.POST
-import retrofit2.http.Path
 
 class Repository {
 
@@ -79,8 +81,29 @@ class Repository {
         return RetrofitInstance.api.getAllRoshetaByDrID(authorization, id)
     }
 
-    suspend fun PostDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: DaysOfWeek) : Response<Boolean>{
+    suspend fun PostDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: StructuredWorkingTimes) : Response<Boolean>{
         return RetrofitInstance.api.PostDoctorWorkingDaysOfWeek(authorization, daysOfWeek)
     }
 
+    suspend fun EditDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: StructuredWorkingTimes) : Response<Boolean>{
+        return RetrofitInstance.api.EditDoctorWorkingDaysOfWeek(authorization, daysOfWeek)
+    }
+
+    suspend fun getAllDaysOfWeekByDrID(authorization: String,  id: String) : Response<List<allDaysWithID>>{
+        return RetrofitInstance.api.getAllDaysOfWeekByDrID(authorization, id)
+    }
+
+    suspend fun getAllStoredWorkingTimes(authorization: String,  id: String) : Response<SortedTimeInterval>{
+        return RetrofitInstance.api.getAllStoredWorkingTimes(authorization, id)
+    }
+
+    suspend fun bookDate(authorization: String,  bookNewDate: BookDate) : Response<ResponseBookDate>{
+        return RetrofitInstance.api.bookDate(authorization, bookNewDate)
+    }
+
+    suspend fun getAllDoctors(authorization: String) : Response<List<GetAllDoctors>>{
+        return RetrofitInstance.api.getAllDoctors(authorization)
+    }
+
 }
+

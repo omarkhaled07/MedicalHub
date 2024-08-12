@@ -3,7 +3,10 @@ package com.example.medicalhub.presentations
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.widget.EditText
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +15,7 @@ import com.example.i_freezemanager.data.SharedPrefManager
 import com.example.medicalhub.MainViewModel
 import com.example.medicalhub.MainViewModelFactory
 import com.example.medicalhub.R
+import com.example.medicalhub.adapter.DoctorRoshetaHistoryAdapter
 import com.example.medicalhub.adapter.PatientData
 import com.example.medicalhub.adapter.PatientDataAdapter
 import com.example.medicalhub.repository.Repository
@@ -22,7 +26,7 @@ class DoctorHistoryRosheta : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var preference: SharedPrefManager
-    private lateinit var docDataAdapter: PatientDataAdapter
+    private lateinit var docDataAdapter: DoctorRoshetaHistoryAdapter
     private lateinit var docDataRecyclerView: RecyclerView
     var body = listOf<allDrRosheta>()
 //Hello
@@ -45,7 +49,7 @@ class DoctorHistoryRosheta : AppCompatActivity() {
         docDataRecyclerView= findViewById(R.id.docDataRecyclerView)
 
         docDataRecyclerView.layoutManager = LinearLayoutManager(this)
-        docDataAdapter = PatientDataAdapter(listOf())
+        docDataAdapter = DoctorRoshetaHistoryAdapter()
         docDataRecyclerView.adapter = docDataAdapter
 
         viewModel.getAllRoshetaByDrID( "Bearer $token", docID!!)
@@ -55,20 +59,17 @@ class DoctorHistoryRosheta : AppCompatActivity() {
                 body = response.body() ?: emptyList()
                 Log.d("abdo", "body $body")
                 // Update the adapter with the new data
-                val patientDataList = body.map {
-                    PatientData(
-                        it.id,
-                        it.diagnosis,
-                        it.medicine,
-                        it.analysis,
-                        it.x_Rays,
-                        it.additionalNotes,
-                        it.doctorId,
-                        it.createdOn
-                    )
-                }
-                docDataAdapter = PatientDataAdapter(patientDataList)
-                docDataRecyclerView.adapter = docDataAdapter
+                val userID = body.map { it.id }
+                val date = body.map { it.createdOn.substringBefore("T") }
+                val diagnosis = body.map { it.diagnosis }
+                val medicine = body.map { it.medicine }
+                val analysis = body.map { it.analysis }
+                val x_Rays = body.map { it.x_Rays }
+                val additionalNotes = body.map { it.additionalNotes }
+                val patientCode = body.map { it.patientCode.toString() }
+
+                docDataAdapter.setData(patientCode,date, diagnosis, medicine, analysis, x_Rays, additionalNotes)
+
 
 
             }
@@ -76,6 +77,18 @@ class DoctorHistoryRosheta : AppCompatActivity() {
                 Log.e("abdo", "error")
             }
         })
+
+    // Search filter
+    val searchEditText = findViewById<EditText>(R.id.search)
+    searchEditText.addTextChangedListener(object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            docDataAdapter.filter(s.toString())
+        }
+
+        override fun afterTextChanged(s: Editable?) {}
+    })
 
     }
 }

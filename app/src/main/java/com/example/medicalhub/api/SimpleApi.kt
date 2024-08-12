@@ -2,10 +2,11 @@ package com.example.medicalhub.api
 
 
 import com.model.AllPateintData
-import com.model.DaysOfWeek
+import com.model.BookDate
 import com.model.DoctorData
 import com.model.DoctorDataEditResponse
 import com.model.DoctorNewData
+import com.model.GetAllDoctors
 import com.model.LoginDoctorBody
 import com.model.LoginDoctorBodyResponse
 import com.model.LoginPatientBody
@@ -14,10 +15,14 @@ import com.model.MedicinDescription
 import com.model.PateintData
 import com.model.PatientDataEditResponse
 import com.model.PatientNewData
+import com.model.ResponseBookDate
 import com.model.SignUpDoctorBodyResponse
 import com.model.SignUpPatientBodyResponse
 import com.model.SignupDoctorBody
 import com.model.SignupPatientBody
+import com.model.SortedTimeInterval
+import com.model.StructuredWorkingTimes
+import com.model.allDaysWithID
 import com.model.allDrRosheta
 import com.model.medicinDescriptionResponse
 import com.model.patientRosheta
@@ -117,10 +122,43 @@ interface SimpleApi {
     @POST("DoctorWorkingDaysOfWeek")
     suspend fun PostDoctorWorkingDaysOfWeek(
         @Header("Authorization") authorization: String,
-        @Body daysOfWeek: DaysOfWeek
+        @Body daysOfWeek: StructuredWorkingTimes
     ): Response<Boolean>
 
+    @Headers("Content-Type: application/json")
+    @PUT("DoctorWorkingDaysOfWeek")
+    suspend fun EditDoctorWorkingDaysOfWeek(
+        @Header("Authorization") authorization: String,
+        @Body daysOfWeek: StructuredWorkingTimes
+    ): Response<Boolean>
+
+    @Headers("Content-Type: application/json")
+    @GET("DoctorWorkingDaysOfWeek/GetAllDaysOfTheWeekByDoctorId/{DoctorId}")
+    suspend fun getAllDaysOfWeekByDrID(
+        @Header("Authorization") authorization: String,
+        @Path("DoctorId") id: String,
+    ): Response<List<allDaysWithID>>
+
+    @Headers("Content-Type: application/json")
+    @GET("DoctorWorkingTime/{DoctorId}/AllStoredWorkingTimes")
+    suspend fun getAllStoredWorkingTimes(
+        @Header("Authorization") authorization: String,
+        @Path("DoctorId") id: String,
+    ): Response<SortedTimeInterval>
+
+    @Headers("Content-Type: application/json")
+    @POST("PatientBooking")
+    suspend fun bookDate(
+        @Header("Authorization") authorization: String,
+        @Body bookNewDate: BookDate
+    ): Response<ResponseBookDate>
+
+    @Headers("Content-Type: application/json")
+    @GET("Doctors")
+    suspend fun getAllDoctors(
+        @Header("Authorization") authorization: String,
+    ): Response<List<GetAllDoctors>>
+
+
 }
-
-
 

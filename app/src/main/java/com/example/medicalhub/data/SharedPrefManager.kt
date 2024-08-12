@@ -2,9 +2,9 @@ package com.example.i_freezemanager.data
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.medicalhub.adapter.DayTimeItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.model.DayTimeItemDoctor
 
 class SharedPrefManager(private val context: Context) {
     private val sharedPreferences: SharedPreferences by lazy {
@@ -70,19 +70,35 @@ class SharedPrefManager(private val context: Context) {
     }
 
     // Save a list of DayTimeItem to SharedPreferences
-    fun saveDayTimeItemList(key: String, list: List<DayTimeItem>) {
+    fun saveDayTimeItemList(key: String, list: List<DayTimeItemDoctor>) {
         val jsonString = gson.toJson(list)
         sharedPreferences.edit().putString(key, jsonString).apply()
     }
 
     // Retrieve a list of DayTimeItem from SharedPreferences
-    fun getDayTimeItemList(key: String): List<DayTimeItem> {
+    fun getDayTimeItemList(key: String): List<DayTimeItemDoctor> {
         val jsonString = sharedPreferences.getString(key, null)
         return if (jsonString != null) {
-            gson.fromJson(jsonString, object : TypeToken<List<DayTimeItem>>() {}.type)
+            gson.fromJson(jsonString, object : TypeToken<List<DayTimeItemDoctor>>() {}.type)
         } else {
             emptyList()
         }
     }
+
+    fun saveWorkingTimeList(key: String, list: List<DayTimeItemDoctor>) {
+        val jsonString = gson.toJson(list)
+        sharedPreferences.edit().putString(key, jsonString).apply()
+    }
+
+    // Retrieve a list of WorkingTime from SharedPreferences
+    fun getWorkingTimeList(key: String): List<DayTimeItemDoctor> {
+        val jsonString = sharedPreferences.getString(key, null)
+        return if (jsonString != null) {
+            gson.fromJson(jsonString, object : TypeToken<List<DayTimeItemDoctor>>() {}.type)
+        } else {
+            emptyList()
+        }
+    }
+
 
 }

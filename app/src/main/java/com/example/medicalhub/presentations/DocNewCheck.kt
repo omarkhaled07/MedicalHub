@@ -2,6 +2,7 @@ package com.example.medicalhub.presentations
 
 import CustomAdapter
 import SelectedItemsAdapter
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,9 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -32,6 +36,7 @@ class DocNewCheck : AppCompatActivity() {
     lateinit var phoneNumber: EditText
     lateinit var mail: EditText
     lateinit var address: EditText
+    lateinit var patCode: EditText
     private lateinit var adapter2: SelectedItemsAdapter
     private lateinit var adapter3: CustomAdapter
     private lateinit var adapter4: SelectedItemsAdapter
@@ -47,21 +52,37 @@ class DocNewCheck : AppCompatActivity() {
 
     lateinit var MedicinRecyclerView: RecyclerView
     lateinit var MedicinAlertBtn: Button
+    lateinit var addNotes: ImageView
+
 
     lateinit var AnalysisAlertButton: Button
     lateinit var AnalysisRecyclerView: RecyclerView
 
     lateinit var XRayAlertButton: Button
     lateinit var XRayRecyclerView: RecyclerView
-
     lateinit var submit: Button
+    lateinit var chronicDiseases : String
+    lateinit var previousOperations : String
+    lateinit var allergies : String
+    lateinit var currentMedications : String
+    lateinit var comments : String
+    lateinit var userNameAlert : String
 
 
     var body = listOf<AllPateintData>()
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doc_new_check)
 
+        chronicDiseases = ""
+        previousOperations = ""
+        allergies = ""
+        currentMedications = ""
+        comments = ""
+        comments = ""
+        userNameAlert = ""
 
         preference = SharedPrefManager(this)
         val repository = Repository()
@@ -73,9 +94,12 @@ class DocNewCheck : AppCompatActivity() {
         phoneNumber = findViewById(R.id.PhoneNumber)
         mail = findViewById(R.id.Age)
         address = findViewById(R.id.insuranceID)
+        addNotes = findViewById(R.id.addNotes)
+
 
         diagnosisAlertBtn = findViewById(R.id.diagnosisAlertBtn)
         DiagnosisRecyclerView = findViewById(R.id.DiagnosisRecyclerView)
+        patCode = findViewById(R.id.patCode)
 
         MedicinRecyclerView = findViewById(R.id.MedicinRecyclerView)
 
@@ -90,10 +114,11 @@ class DocNewCheck : AppCompatActivity() {
         submit = findViewById(R.id.submit)
 
 
-
         val token = preference.getPrefVal(this).getString("token", "")
 
-
+        addNotes.setOnClickListener {
+            getPatientData()
+        }
         viewModel.getAllPatient("Bearer $token")
         viewModel.getAllPatients.observe(this, Observer { response ->
             if (response.isSuccessful) {
@@ -134,10 +159,6 @@ class DocNewCheck : AppCompatActivity() {
             val selectedAnalyses = adapter2.getSelectedItems()
             val selectedXRays = adapter5.getSelectedItems()
 
-            Log.d("abdo", "selectedDiagnosis $selectedDiagnosis")
-            Log.d("abdo", "selectedMedicins $selectedMedicins")
-            Log.d("abdo", "selectedAnalyses $selectedAnalyses")
-            Log.d("abdo", "selectedXRays $selectedXRays")
 
             var medicinDesription = MedicinDescription(
                 diagnosis = selectedDiagnosis.joinToString(", "),
@@ -147,8 +168,8 @@ class DocNewCheck : AppCompatActivity() {
                 additionalNotes = "additionalNotes",
                 doctorId = preference.getPrefVal(this).getString("docID", "") ?: "",
                 patientId = preference.getPrefVal(this).getString("patientID", "") ?: "",
-
-                )
+                patientCode = preference.getPrefVal(this).getString("patCode", "") ?: ""
+            )
             Log.d("abdo", "medicinDesription $medicinDesription")
             viewModel.addMedicineDescription("Bearer $token", medicinDesription)
             viewModel.addMedicin.observe(this, Observer { response ->
@@ -162,12 +183,7 @@ class DocNewCheck : AppCompatActivity() {
 
         }
 
-
-
-
-
-
-        nationalId.addTextChangedListener(object : TextWatcher {
+        patCode.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 // Do nothing
             }
@@ -177,19 +193,30 @@ class DocNewCheck : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val nationalID = s.toString().toIntOrNull()
-                Log.d("test", "nationalID $nationalID")
-
-                val patientData = body.find { it.nationalID == nationalID.toString() }
-
+                val editTextCode = s.toString().toIntOrNull()
+//                Log.d("test", "nationalID $nationalID")
+                Log.d("abdo", "patientData $editTextCode")
+                val patientData = body.find { it.patientCode.toString() == editTextCode.toString() }
+                Log.d("abdo", "patientData $patientData")
                 if (patientData != null) {
                     val patientID = patientData.id
-                    preference.setPrefVal(applicationContext, "patientID",patientID)
+                    val patCode = patientData.patientCode
+                    preference.setPrefVal(applicationContext, "patientID", patientID)
+                    preference.setPrefVal(applicationContext, "patCode", patCode.toString())
                     Log.d("abdo", "patientID $patientID")
+                    nationalId.setText(patientData.nationalID)
                     userName.setText(patientData.userName)
-                    phoneNumber.setText(patientData.phoneNumber)
+                    phoneNumber.setText(patientData.phone)
                     mail.setText(patientData.email)
                     address.setText(patientData.address)
+
+                    userNameAlert = patientData.userName ?: ""
+                    chronicDiseases = patientData.chronicDiseases ?: ""
+                    previousOperations = patientData.previousOperations ?: ""
+                    allergies = patientData.allergies ?: ""
+                    currentMedications = patientData.currentMedications ?: ""
+                    comments = patientData.comments ?: ""
+
                 } else {
                     userName.setText("")
                     phoneNumber.setText("")
@@ -199,6 +226,51 @@ class DocNewCheck : AppCompatActivity() {
             }
         })
     }
+
+
+    @SuppressLint("MissingInflatedId")
+    fun getPatientData() {
+        val dialogView = layoutInflater.inflate(R.layout.add_additional_info_ad, null)
+        val etChronicDiseases = dialogView.findViewById<TextView>(R.id.etChronicDiseases)
+        val etPreviousOperations = dialogView.findViewById<TextView>(R.id.etPreviousOperations)
+        val etAllergies = dialogView.findViewById<TextView>(R.id.etAllergies)
+        val etCurrentMedications = dialogView.findViewById<TextView>(R.id.etCurrentMedications)
+        val etComments = dialogView.findViewById<TextView>(R.id.etComments)
+        val etTitle = dialogView.findViewById<TextView>(R.id.etTitle)
+
+        Log.d("abdo", "chronicDiseases $chronicDiseases")
+        Log.d("abdo", "previousOperations $previousOperations")
+        Log.d("abdo", "allergies $allergies")
+        Log.d("abdo", "currentMedications $currentMedications")
+        Log.d("abdo", "comments $comments")
+        // Populate the fields with existing data
+        etChronicDiseases.setText(chronicDiseases)
+        etPreviousOperations.setText(previousOperations)
+        etAllergies.setText(allergies)
+        etCurrentMedications.setText(currentMedications)
+        etComments.setText(comments)
+        etTitle.setText(userNameAlert)
+
+
+        android.app.AlertDialog.Builder(this)
+            .setTitle("Add Additional Info")
+            .setView(dialogView)
+//            .setPositiveButton("Submit") { dialog, _ ->
+//                chronicDiseases = etChronicDiseases.text.toString()
+//                previousOperations = etPreviousOperations.text.toString()
+//                allergies = etAllergies.text.toString()
+//                currentMedications = etCurrentMedications.text.toString()
+//                comments = etComments.text.toString()
+//                // Handle the collected data (e.g., send to API)
+//                dialog.dismiss()
+//            }
+//            .setNegativeButton("Cancel") { dialog, _ ->
+//                dialog.dismiss()
+//            }
+            .create()
+            .show()
+    }
+
 
     fun AddDiagnosis() {
         // Initialize the Spinner with a list of items
@@ -261,7 +333,6 @@ class DocNewCheck : AppCompatActivity() {
             val note = medicinItemsWithNotes[item]
             "$item\n$note" // Combine the item and note
         }.toTypedArray()
-
 
 
         // Attach a click listener to the button

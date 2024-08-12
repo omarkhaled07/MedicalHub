@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:gravity="center"
+        android:hint="Patient Name"
+        android:inputType="text"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/etChronicDiseases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Chronic Diseases"
+        android:inputType="text"
+        android:textSize="20sp"
+
+        />
+
+    <TextView
+        android:id="@+id/etPreviousOperations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Previous Operations"
+        android:inputType="text"
+        android:textSize="20sp"
+
+        />
+
+    <TextView
+        android:id="@+id/etAllergies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Allergies"
+        android:inputType="text"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/etCurrentMedications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Current Medications"
+        android:inputType="text"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/etComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Comments"
+        android:inputType="text"
+        android:textSize="20sp"
+
+
+        />
+
+
+</LinearLayout>

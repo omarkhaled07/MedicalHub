@@ -28,8 +28,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        preferences = SharedPrefManager(requireContext())
+
         binding.btnPersonalInfo.setOnClickListener {
-            preferences = SharedPrefManager(requireContext())
             val selectedRadioButton =
                 preferences.getPrefVal(requireContext()).getString("SelectedRadioButton", "")
                     .toString()

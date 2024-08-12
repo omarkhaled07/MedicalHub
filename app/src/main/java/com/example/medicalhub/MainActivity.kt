@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         button = findViewById(R.id.button)
         radioGroup = findViewById(R.id.radioGroup)
         NationalID = findViewById(R.id.nationalID)
+
         // Creating a ViewModelFactory with the repository
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)

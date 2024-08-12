@@ -18,13 +18,61 @@
             android:id="@+id/MedicalCheckTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_95sdp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:text="-- Medicine Description --"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/addNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/MedicalCheckTitle"
+            android:src="@drawable/question"
+            />
+
+        <EditText
+            android:id="@+id/patCode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/code"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/blue"
+            android:hint="Enter Patient Code"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MedicalCheckTitle" />
+
+        <EditText
+            android:id="@+id/NationalId"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/id"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableTint="@color/blue"
+            android:hint="Enter National ID"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patCode" />
 
         <EditText
             android:id="@+id/UserName"
@@ -46,30 +94,11 @@
             app:layout_constraintTop_toBottomOf="@+id/NationalId" />
 
         <EditText
-            android:id="@+id/NationalId"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@drawable/edit_text_background"
-            android:drawableLeft="@drawable/id"
-            android:drawablePadding="@dimen/_8sdp"
-            android:drawableTint="@color/blue"
-            android:hint="Enter National ID"
-            android:textColorHint="@color/hintColor"
-            android:textColor="@color/black"
-            android:inputType="number"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/MedicalCheckTitle" />
-
-        <EditText
             android:id="@+id/PhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:background="@drawable/edit_text_background"
             android:drawableLeft="@drawable/phonenumber"
             android:drawablePadding="@dimen/_8sdp"
@@ -88,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:background="@drawable/edit_text_background"
             android:drawableLeft="@drawable/mail"
             android:drawablePadding="@dimen/_8sdp"
@@ -107,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:background="@drawable/edit_text_background"
             android:drawableLeft="@drawable/home"
             android:drawablePadding="@dimen/_8sdp"

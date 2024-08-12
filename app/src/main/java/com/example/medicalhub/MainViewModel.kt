@@ -6,10 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.medicalhub.api.RetrofitInstance
 import com.example.medicalhub.repository.Repository
 import com.model.AllPateintData
-import com.model.DaysOfWeek
+import com.model.BookDate
 import com.model.DoctorData
 import com.model.DoctorDataEditResponse
 import com.model.DoctorNewData
+import com.model.GetAllDoctors
 import com.model.LoginDoctorBody
 import com.model.LoginDoctorBodyResponse
 import com.model.LoginPatientBody
@@ -18,10 +19,14 @@ import com.model.MedicinDescription
 import com.model.PateintData
 import com.model.PatientDataEditResponse
 import com.model.PatientNewData
+import com.model.ResponseBookDate
 import com.model.SignUpDoctorBodyResponse
 import com.model.SignUpPatientBodyResponse
 import com.model.SignupDoctorBody
 import com.model.SignupPatientBody
+import com.model.SortedTimeInterval
+import com.model.StructuredWorkingTimes
+import com.model.allDaysWithID
 import com.model.allDrRosheta
 import com.model.medicinDescriptionResponse
 import com.model.patientRosheta
@@ -44,6 +49,11 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     var getRosheta: MutableLiveData<Response<List<patientRosheta>>> = MutableLiveData()
     var getalldrRosheta: MutableLiveData<Response<List<allDrRosheta>>> = MutableLiveData()
     var postDocWorkingTime: MutableLiveData<Response<Boolean>> = MutableLiveData()
+    var editDocWorkingTime: MutableLiveData<Response<Boolean>> = MutableLiveData()
+    var getAllDaysbiID: MutableLiveData<Response<List<allDaysWithID>>> = MutableLiveData()
+    var getIntervalTimes: MutableLiveData<Response<SortedTimeInterval>> = MutableLiveData()
+    var bookPatient: MutableLiveData<Response<ResponseBookDate>> = MutableLiveData()
+    var getallactiveDr: MutableLiveData<Response<List<GetAllDoctors>>> = MutableLiveData()
 
 
     fun doctorSignUp(loginBody: SignupDoctorBody) {
@@ -166,7 +176,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun PostDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: DaysOfWeek) {
+    fun PostDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: StructuredWorkingTimes) {
         // Launching a coroutine within the viewModelScope to handle asynchronous operations
         viewModelScope.launch {
             // Calling the getPost function in the repository to fetch post data
@@ -176,5 +186,54 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
+    fun EditDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: StructuredWorkingTimes) {
+        // Launching a coroutine within the viewModelScope to handle asynchronous operations
+        viewModelScope.launch {
+            // Calling the getPost function in the repository to fetch post data
+            val response1 = repository.EditDoctorWorkingDaysOfWeek(authorization, daysOfWeek)
+            // Setting the response data in the LiveData for observation by the UI
+            editDocWorkingTime.value = response1
+        }
+    }
+
+    fun getAllDaysOfWeekByDrID(authorization: String, id: String) {
+        // Launching a coroutine within the viewModelScope to handle asynchronous operations
+        viewModelScope.launch {
+            // Calling the getPost function in the repository to fetch post data
+            val response1 = repository.getAllDaysOfWeekByDrID(authorization, id)
+            // Setting the response data in the LiveData for observation by the UI
+            getAllDaysbiID.value = response1
+        }
+    }
+
+    fun getAllStoredWorkingTimes(authorization: String, id: String) {
+        // Launching a coroutine within the viewModelScope to handle asynchronous operations
+        viewModelScope.launch {
+            // Calling the getPost function in the repository to fetch post data
+            val response1 = repository.getAllStoredWorkingTimes(authorization, id)
+            // Setting the response data in the LiveData for observation by the UI
+            getIntervalTimes.value = response1
+        }
+    }
+
+    fun bookDate(authorization: String,  bookNewDate: BookDate) {
+        // Launching a coroutine within the viewModelScope to handle asynchronous operations
+        viewModelScope.launch {
+            // Calling the getPost function in the repository to fetch post data
+            val response1 = repository.bookDate(authorization, bookNewDate)
+            // Setting the response data in the LiveData for observation by the UI
+            bookPatient.value = response1
+        }
+    }
+
+    fun getAllDoctors(authorization: String) {
+        // Launching a coroutine within the viewModelScope to handle asynchronous operations
+        viewModelScope.launch {
+            // Calling the getPost function in the repository to fetch post data
+            val response1 = repository.getAllDoctors(authorization)
+            // Setting the response data in the LiveData for observation by the UI
+            getallactiveDr.value = response1
+        }
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.example.medicalhub.fragment
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,8 +37,14 @@ class EditProfilePatient : Fragment() {
     private lateinit var et_confirmPassword: TextInputEditText
     private lateinit var password: TextInputEditText
     private lateinit var updateButton: Button
+    private lateinit var tvPatientAdditionalInfo: TextView
+    var chronicDiseases: String? = ""
+    var previousOperations: String? = ""
+    var allergies: String? = ""
+    var currentMedications: String? = ""
+    var comments: String? = ""
 
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,11 +67,17 @@ class EditProfilePatient : Fragment() {
         et_confirmPassword = view.findViewById(R.id.et_confirmPassword)
         password = view.findViewById(R.id.et_password)
         updateButton = view.findViewById(R.id.btn_update)
+        tvPatientAdditionalInfo = view.findViewById(R.id.tvPatientAdditionalInfo)
 
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         Log.d("abdo","Login patient edit fragment")
+
+        tvPatientAdditionalInfo.setOnClickListener {
+            showAdditionalInfoDialog()
+        }
+
         viewModel.getPatientData(patID!!, "Bearer $token")
         viewModel.getPatData.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful) {
@@ -72,6 +87,11 @@ class EditProfilePatient : Fragment() {
                 et_email.setText(response.body()?.email.toString())
                 et_address.setText(response.body()?.address.toString())
                 et_phoneNumber.setText(response.body()?.phoneNumber.toString())
+                chronicDiseases=response.body()?.chronicDiseases.toString() ?: ""
+                previousOperations=response.body()?.previousOperations.toString() ?: ""
+                allergies=response.body()?.allergies.toString() ?: ""
+                currentMedications=response.body()?.currentMedications.toString() ?: ""
+                comments=response.body()?.comments.toString() ?: ""
 
             }
         })
@@ -126,4 +146,40 @@ class EditProfilePatient : Fragment() {
 
     }
 
+    private fun showAdditionalInfoDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.add_addtional_info_sign_up, null)
+        val etChronicDiseases = dialogView.findViewById<EditText>(R.id.etChronicDiseases)
+        val etPreviousOperations = dialogView.findViewById<EditText>(R.id.etPreviousOperations)
+        val etAllergies = dialogView.findViewById<EditText>(R.id.etAllergies)
+        val etCurrentMedications = dialogView.findViewById<EditText>(R.id.etCurrentMedications)
+        val etComments = dialogView.findViewById<EditText>(R.id.etComments)
+
+        // Populate the fields with existing data
+        etChronicDiseases.setText(chronicDiseases)
+        etPreviousOperations.setText(previousOperations)
+        etAllergies.setText(allergies)
+        etCurrentMedications.setText(currentMedications)
+        etComments.setText(comments)
+
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Add Additional Info")
+            .setView(dialogView)
+            .setPositiveButton("Submit") { dialog, _ ->
+                chronicDiseases = etChronicDiseases.text.toString() ?: ""
+                previousOperations = etPreviousOperations.text.toString() ?: ""
+                allergies = etAllergies.text.toString() ?: ""
+                currentMedications = etCurrentMedications.text.toString() ?: ""
+                comments = etComments.text.toString() ?: ""
+                // Handle the collected data (e.g., send to API)
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+
 }
+

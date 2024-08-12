@@ -17,6 +17,9 @@
         android:theme="@style/Theme.MedicalHub"
         tools:targetApi="31">
         <activity
+            android:name=".presentations.NewRecommendedReservation"
+            android:exported="false" />
+        <activity
             android:name=".presentations.DoctorHistoryRosheta"
             android:exported="false" />
         <activity

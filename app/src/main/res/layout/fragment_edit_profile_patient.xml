@@ -152,6 +152,20 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <TextView
+            android:id="@+id/tvPatientAdditionalInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Additional Data"
+            android:drawableLeft="@drawable/add_info"
+            android:drawablePadding="@dimen/_5sdp"
+            android:layout_below="@id/editTextConfirmPassword"
+            />
+
     </RelativeLayout>
 
     <Button

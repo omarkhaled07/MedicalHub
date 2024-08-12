@@ -109,7 +109,6 @@ data class DoctorDataEditResponse(
     val phone: String,
     val password: String,
     val confirmPassword: String,
-
     )
 
 
@@ -145,10 +144,13 @@ data class PateintData(
     val email: String,
     val address: String,
     val phoneNumber: String,
-
+    val chronicDiseases: String?,
+    val previousOperations: String?,
+    val allergies: String?,
+    val currentMedications: String?,
+    val comments: String?,
     )
 
-//Get All Patients data
 
 data class AllPateintData(
     val id: String,
@@ -156,10 +158,16 @@ data class AllPateintData(
     val userName: String,
     val email: String,
     val address: String,
-    val phoneNumber: String,
+    val phone: String,
     val password: String,
     val medicineDescriptions: String?,
-    val patientBooking: String?
+    val patientBooking: String?,
+    val patientCode: Int,
+    val chronicDiseases: String?,
+    val previousOperations: String?,
+    val allergies: String?,
+    val currentMedications: String?,
+    val comments: String?,
 )
 
 
@@ -172,6 +180,7 @@ data class MedicinDescription(
     val additionalNotes: String,
     val doctorId: String,
     val patientId: String,
+    val patientCode: String,
 
     )
 
@@ -209,6 +218,7 @@ data class patientRosheta(
 
 data class allDrRosheta(
     val id: String,
+    val patientCode: Int,
     val diagnosis: String,
     val medicine: String,
     val analysis: String,
@@ -222,4 +232,67 @@ data class allDrRosheta(
     val createdBy: Any?,
     val updatedOn: String?,
     val updatedBy: Any?
+)
+
+
+//Post Days of week
+data class StructuredWorkingTimes(
+    var sunDayFrom: String = "",
+    var sunDayTo: String = "",
+    var monDayFrom: String = "",
+    var monDayTo: String = "",
+    var tuesDayFrom: String = "",
+    var tuesDayTo: String = "",
+    var wednesDayFrom: String = "",
+    var wednesDayTo: String = "",
+    var thursDayFrom: String = "",
+    var thursDayTo: String = "",
+    var friDayFrom: String = "",
+    var friDayTo: String = "",
+    var saturDayFrom: String = "",
+    var saturDayTo: String = "",
+    var doctorId: String = ""
+)
+
+//GetAllDaysOfTheWeekByDoctorId with ID
+data class allDaysWithID(
+    var id: Int,
+    var sunDayFrom: String = "",
+    var sunDayTo: String = "",
+    var monDayFrom: String = "",
+    var monDayTo: String = "",
+    var tuesDayFrom: String = "",
+    var tuesDayTo: String = "",
+    var wednesDayFrom: String = "",
+    var wednesDayTo: String = "",
+    var thursDayFrom: String = "",
+    var thursDayTo: String = "",
+    var friDayFrom: String = "",
+    var friDayTo: String = "",
+    var saturDayFrom: String = "",
+    var saturDayTo: String = "",
+    var doctorId: String = ""
+)
+
+data class BookDate(
+    val patientId: String,
+    val doctorTimeIntervalId: Int
+)
+
+data class ResponseBookDate(
+    val patientId: String,
+    val doctorTimeIntervalId: Int
+)
+
+data class GetAllDoctors(
+    val id: String,
+    val userName: String,
+    val specialization: String?,
+    val email: String,
+    val phoneNumber: String,
+    val address: String,
+    val password: String,
+    val medicineDescriptions: Any?, // Change Any? to the specific type if you know it
+    val doctorWorkingTime: Any?,    // Change Any? to the specific type if you know it
+    val doctorWorkingDaysOfWeek: Any? // Change Any? to the specific type if you know it
 )
