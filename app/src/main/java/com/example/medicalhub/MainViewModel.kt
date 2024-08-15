@@ -16,6 +16,7 @@ import com.model.LoginDoctorBodyResponse
 import com.model.LoginPatientBody
 import com.model.LoginPatientBodyResponse
 import com.model.MedicinDescription
+import com.model.PUTDoctorWorkingDaysOfWeek
 import com.model.PateintData
 import com.model.PatientDataEditResponse
 import com.model.PatientNewData
@@ -49,7 +50,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     var getRosheta: MutableLiveData<Response<List<patientRosheta>>> = MutableLiveData()
     var getalldrRosheta: MutableLiveData<Response<List<allDrRosheta>>> = MutableLiveData()
     var postDocWorkingTime: MutableLiveData<Response<Boolean>> = MutableLiveData()
-    var editDocWorkingTime: MutableLiveData<Response<Boolean>> = MutableLiveData()
+    var editDocWorkingTime: MutableLiveData<Response<allDaysWithID>> = MutableLiveData()
     var getAllDaysbiID: MutableLiveData<Response<List<allDaysWithID>>> = MutableLiveData()
     var getIntervalTimes: MutableLiveData<Response<SortedTimeInterval>> = MutableLiveData()
     var bookPatient: MutableLiveData<Response<ResponseBookDate>> = MutableLiveData()
@@ -186,7 +187,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun EditDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: StructuredWorkingTimes) {
+    fun EditDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: PUTDoctorWorkingDaysOfWeek) {
         // Launching a coroutine within the viewModelScope to handle asynchronous operations
         viewModelScope.launch {
             // Calling the getPost function in the repository to fetch post data

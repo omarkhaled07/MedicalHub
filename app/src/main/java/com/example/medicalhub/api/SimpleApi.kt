@@ -12,6 +12,7 @@ import com.model.LoginDoctorBodyResponse
 import com.model.LoginPatientBody
 import com.model.LoginPatientBodyResponse
 import com.model.MedicinDescription
+import com.model.PUTDoctorWorkingDaysOfWeek
 import com.model.PateintData
 import com.model.PatientDataEditResponse
 import com.model.PatientNewData
@@ -129,8 +130,8 @@ interface SimpleApi {
     @PUT("DoctorWorkingDaysOfWeek")
     suspend fun EditDoctorWorkingDaysOfWeek(
         @Header("Authorization") authorization: String,
-        @Body daysOfWeek: StructuredWorkingTimes
-    ): Response<Boolean>
+        @Body daysOfWeek: PUTDoctorWorkingDaysOfWeek
+    ): Response<allDaysWithID>
 
     @Headers("Content-Type: application/json")
     @GET("DoctorWorkingDaysOfWeek/GetAllDaysOfTheWeekByDoctorId/{DoctorId}")

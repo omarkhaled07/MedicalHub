@@ -254,6 +254,26 @@ data class StructuredWorkingTimes(
     var doctorId: String = ""
 )
 
+//Edit Days of week
+data class PUTDoctorWorkingDaysOfWeek(
+    var id: Int,
+    var sunDayFrom: String = "",
+    var sunDayTo: String = "",
+    var monDayFrom: String = "",
+    var monDayTo: String = "",
+    var tuesDayFrom: String = "",
+    var tuesDayTo: String = "",
+    var wednesDayFrom: String = "",
+    var wednesDayTo: String = "",
+    var thursDayFrom: String = "",
+    var thursDayTo: String = "",
+    var friDayFrom: String = "",
+    var friDayTo: String = "",
+    var saturDayFrom: String = "",
+    var saturDayTo: String = "",
+    var doctorId: String = "",
+    var doctor:String?
+)
 //GetAllDaysOfTheWeekByDoctorId with ID
 data class allDaysWithID(
     var id: Int,

@@ -7,11 +7,18 @@
     android:background="@color/white"
     tools:context=".presentations.NewRecommendedReservation"
     android:orientation="vertical">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="10dp">
 
 
         <TextView
@@ -38,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
-        android:layout_margin="15dp">
+        android:layout_margin="10dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,20 +91,29 @@
             android:text="Reservation"
             android:textSize="25sp" />
 
+        <TextView
+            android:id="@+id/recyclerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:text="Date: "
+            android:textSize="25sp" />
+
     <!-- Horizontal RecyclerView for Dates -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewDates"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="3dp"/>
 
     <!-- Vertical RecyclerView for Times -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTimes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="5dp"/>
 
     <!-- Add Button -->
     <Button
@@ -110,5 +126,7 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/blue"
         android:enabled="false"/>
+    </LinearLayout>
 
+</ScrollView>
 </LinearLayout>

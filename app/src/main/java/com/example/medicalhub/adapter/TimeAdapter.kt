@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.medicalhub.R
@@ -20,7 +21,7 @@ class TimeAdapter(
     private var selectedPosition = -1
 
     inner class TimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val timeButton: Button = itemView.findViewById(R.id.timeButton)
+        val timeButton: TextView = itemView.findViewById(R.id.timeButton)
 
         @SuppressLint("ResourceAsColor")
         fun bind(time: ResultInterval, position: Int) {
@@ -30,14 +31,14 @@ class TimeAdapter(
                 onTimeSelected(time)
                 notifyDataSetChanged()
             }
-            val selectedColor = ContextCompat.getColor(itemView.context, R.color.blue)
-            timeButton.setBackgroundColor(
-                if (selectedPosition == position) selectedColor else Color.WHITE
-            )
-
-            timeButton.setTextColor(
-                if (selectedPosition == position)  Color.WHITE else Color.BLACK
-            )
+            if (selectedPosition == position) {
+                timeButton.setBackgroundResource(R.drawable.green_shape_with_corner_radius)
+                timeButton.setTextColor(Color.WHITE)
+            } else {
+                // Revert to the initial drawable with the black frame
+                timeButton.setBackgroundResource(R.drawable.white_shape_with_corner_radius)
+                timeButton.setTextColor(Color.BLACK)
+            }
         }
     }
 

@@ -100,5 +100,15 @@ class SharedPrefManager(private val context: Context) {
         }
     }
 
+    // Save a boolean value to SharedPreferences
+    fun saveBoolean(key: String, value: Boolean) {
+        sharedPreferences.edit().putBoolean(key, value).apply()
+    }
+
+    // Retrieve a boolean value from SharedPreferences
+    fun getBoolean(key: String, defaultValue: Boolean = true): Boolean {
+        return sharedPreferences.getBoolean(key, defaultValue)
+    }
+
 
 }

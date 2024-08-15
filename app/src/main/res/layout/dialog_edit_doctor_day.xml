@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- Day Name -->
+<TextView
+    android:id="@+id/dayNameTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Day"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    android:textColor="@color/blue"
+    android:paddingBottom="8dp" />
+
+<!-- Start Time -->
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/editTextStartTime"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:hint="Start Time">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/startTimeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/time_start"
+        android:drawablePadding="10dp"
+        android:textColor="@color/black"
+        android:inputType="time"
+        />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+<!-- End Time -->
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/editTextEndTime"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:hint="End Time">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/endTimeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/time_end"
+        android:drawablePadding="10dp"
+        android:textColor="@color/black"
+        android:inputType="time"
+        />
+</com.google.android.material.textfield.TextInputLayout>
+
+<!-- Save Button -->
+<Button
+    android:id="@+id/saveButton"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="60dp"
+    android:layout_height="wrap_content"
+    android:text="Save"
+    android:backgroundTint="@color/blue"
+
+    android:layout_marginTop="16dp" />
+
+</LinearLayout>

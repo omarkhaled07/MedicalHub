@@ -21,7 +21,7 @@ class DateAdapter(
     private var selectedPosition = -1
 
     inner class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val dateButton: Button = itemView.findViewById(R.id.dateButton)
+        val dateButton: TextView = itemView.findViewById(R.id.dateButton)
 
         @SuppressLint("ResourceAsColor")
         fun bind(date: String, position: Int) {
@@ -31,14 +31,15 @@ class DateAdapter(
                 onDateSelected(date)
                 notifyDataSetChanged()
             }
-            val selectedColor = ContextCompat.getColor(itemView.context, R.color.blue)
 
-            dateButton.setBackgroundColor(
-                if (selectedPosition == position) selectedColor else Color.WHITE
-            )
-            dateButton.setTextColor(
-                if (selectedPosition == position)  Color.WHITE else Color.BLACK
-            )
+            if (selectedPosition == position) {
+                dateButton.setBackgroundResource(R.drawable.green_shape_with_corner_radius)
+                dateButton.setTextColor(Color.WHITE)
+            } else {
+                // Revert to the initial drawable with the black frame
+                dateButton.setBackgroundResource(R.drawable.white_shape_with_corner_radius)
+                dateButton.setTextColor(Color.BLACK)
+            }
         }
     }
 

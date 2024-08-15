@@ -8,74 +8,69 @@
     android:orientation="vertical"
     tools:context=".presentations.MyWorkingTime">
 
-    <!-- Spinner for selecting days -->
-    <Spinner
-        android:id="@+id/spinner_days"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/days_of_week" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
 
-    <!-- Time Picker for selecting "From" time -->
-    <TimePicker
-        android:id="@+id/timePicker_from"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
-        android:timePickerMode="spinner"
-        android:numbersTextColor="@color/black"
 
-        android:numbersInnerTextColor="@color/black"
-        style="@style/CustomTimePickerStyle"
+            <TextView
+                android:id="@+id/drAvailabilityFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Doctor Availability"
+                android:textSize="25sp" />
+            <ImageView
+                android:id="@+id/backArrow"
+                android:layout_marginTop="10dp"
 
-        />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/backarrow" />
+        </RelativeLayout>
 
-    <!-- Time Picker for selecting "To" time -->
-    <TimePicker
-        android:id="@+id/timePicker_to"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
-        android:timePickerMode="spinner"
-        android:numbersSelectorColor="@color/white"
-        style="@style/CustomTimePickerStyle"
-         />
 
-    <!-- Save button -->
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue"
-        android:layout_marginHorizontal="@dimen/_60sdp"
-        android:textColor="@color/white"
-        android:text="Add" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="15dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <!-- RecyclerView to display saved time entries -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_working_times"
-        android:layout_margin="@dimen/_20sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+            />
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:layout_marginHorizontal="@dimen/_100sdp"
+            android:text="Submit"/>
 
-<Button
-    android:id="@+id/setWorkingTime"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Set Working Time"
-    android:backgroundTint="@color/blue"
-    android:textColor="@color/white"
-    android:layout_marginHorizontal="@dimen/_60sdp"
-    />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="15dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/displayDrRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <Button
-        android:id="@+id/updateWorkingTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update Working Time"
-        android:backgroundTint="@color/blue"
-        android:textColor="@color/white"
-        android:visibility="gone"
-        android:layout_marginHorizontal="@dimen/_60sdp"
-        />
+            />
+
+
+
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

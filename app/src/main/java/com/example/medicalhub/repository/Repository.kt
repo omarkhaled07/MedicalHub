@@ -12,6 +12,7 @@ import com.model.LoginDoctorBodyResponse
 import com.model.LoginPatientBody
 import com.model.LoginPatientBodyResponse
 import com.model.MedicinDescription
+import com.model.PUTDoctorWorkingDaysOfWeek
 import com.model.PateintData
 import com.model.PatientDataEditResponse
 import com.model.PatientNewData
@@ -85,7 +86,7 @@ class Repository {
         return RetrofitInstance.api.PostDoctorWorkingDaysOfWeek(authorization, daysOfWeek)
     }
 
-    suspend fun EditDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: StructuredWorkingTimes) : Response<Boolean>{
+    suspend fun EditDoctorWorkingDaysOfWeek(authorization: String, daysOfWeek: PUTDoctorWorkingDaysOfWeek) : Response<allDaysWithID>{
         return RetrofitInstance.api.EditDoctorWorkingDaysOfWeek(authorization, daysOfWeek)
     }
 

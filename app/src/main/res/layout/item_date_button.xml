@@ -4,11 +4,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <Button
+    <TextView
         android:id="@+id/dateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date" />
+        android:padding="@dimen/_10sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:text="Date"
+        android:background="@drawable/white_shape_with_corner_radius"
+        android:textSize="@dimen/_12sdp"
+        />
 
 
 </LinearLayout>

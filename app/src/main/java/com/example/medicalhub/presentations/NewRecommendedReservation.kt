@@ -1,5 +1,6 @@
 package com.example.medicalhub.presentations
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -87,11 +89,20 @@ class NewRecommendedReservation : AppCompatActivity() {
             viewModel.bookDate("Bearer $token", bookDate)
             viewModel.bookPatient.observe(this, Observer { response ->
                 if (response.isSuccessful) {
-                              Toast.makeText(
-                this,
-                "You booked The Date Successfully: $selectedDate at ${selectedTime?.intervalStart}",
-                Toast.LENGTH_LONG
-            ).show()
+                    // Create an alert dialog to show the selected date and time
+                    AlertDialog.Builder(this)
+                        .setTitle("Booking Confirmation")
+                        .setMessage("You booked The Date Successfully: $selectedDate at ${selectedTime?.intervalStart}")
+                        .setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                            // Navigate to another page (e.g., a confirmation page or main screen)
+                            val intent = Intent(this, HomePatientActivity::class.java)
+                            startActivity(intent)
+                        }
+                        .setNegativeButton("Cancel") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
                 }
             })
         }
@@ -104,7 +115,7 @@ class NewRecommendedReservation : AppCompatActivity() {
             setupTimeRecyclerView(groupedData[date] ?: emptyList())
             btnAdd.isEnabled = false
         }
-        recyclerViewDates.layoutManager = GridLayoutManager(this, 3)
+        recyclerViewDates.layoutManager = GridLayoutManager(this, 4)
         recyclerViewDates.adapter = dateAdapter
     }
 
@@ -113,7 +124,7 @@ class NewRecommendedReservation : AppCompatActivity() {
             selectedTime = time
             btnAdd.isEnabled = true
         }
-        recyclerViewTimes.layoutManager = LinearLayoutManager(this)
+        recyclerViewTimes.layoutManager = GridLayoutManager(this, 2)
         recyclerViewTimes.adapter = timeAdapter
     }
 }
