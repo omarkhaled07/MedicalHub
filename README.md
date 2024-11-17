@@ -1,4 +1,5 @@
 MedicalHub
+
 MedicalHub is an all-in-one mobile application developed to bridge the gap between patients and healthcare providers. Designed to enhance patient care and simplify health management, MedicalHub connects patients with doctors, offers reliable medical resources, and enables effective health tracking. Built with Kotlin and integrated with Firebase, MedicalHub provides a secure, user-friendly platform for managing medical needs, from scheduling appointments to telemedicine consultations.
 
 📲 Key Features
